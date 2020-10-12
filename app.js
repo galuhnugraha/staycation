@@ -10,6 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+var cors = require('cors')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://staycation:28agustus@cluster0.3mrpv.mongodb.net/db_staycation?retryWrites=true&w=majority', {useNewUrlParser: true, 
@@ -41,10 +42,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res,next) => {
   res.setHeader('Access-Control-Allow-Origin','*');
   res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS,PATH');
-  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization,multipart/form-data');
   next()
 })
-
+app.use(cors())
 app.use('/sb-admin-2',express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 // admin
 app.use('/admin',adminRouter);
