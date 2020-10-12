@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-var cors = require('cors')
+const cors = require('cors')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://staycation:28agustus@cluster0.3mrpv.mongodb.net/db_staycation?retryWrites=true&w=majority', {useNewUrlParser: true, 
@@ -25,6 +25,7 @@ const apiRouter = require('./routes/api');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.use(cors())
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(session({
@@ -42,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res,next) => {
   res.setHeader('Access-Control-Allow-Origin','*');
   res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS,PATH');
-  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization,multipart/form-data');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
   next()
 })
 app.use(cors())
