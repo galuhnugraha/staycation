@@ -44,6 +44,12 @@ app.use((req,res,next) => {
   res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
   next()
 })
+app.use((req,res,next) => {
+  res.setHeader('Access-Control-Allow-Origin','https://staycation-backend.herokuapp.com/api/v1/member/booking-page');
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS,PATH');
+  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
+  next()
+})
 app.use('/sb-admin-2',express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 // admin
 app.use('/admin',adminRouter);
