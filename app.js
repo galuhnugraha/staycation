@@ -25,7 +25,6 @@ const apiRouter = require('./routes/api');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.use(cors())
 app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 app.use(session({
@@ -40,13 +39,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req,res,next) => {
-  res.setHeader('Access-Control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,DELETE,OPTIONS,PATH');
-  res.setHeader('Access-Control-Allow-Headers','Content-Type, Authorization');
-  next()
-})
-app.use(cors())
+app.use(cors());
 app.use('/sb-admin-2',express.static(path.join(__dirname, 'node_modules/startbootstrap-sb-admin-2')));
 // admin
 app.use('/admin',adminRouter);
