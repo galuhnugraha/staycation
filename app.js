@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
-const cors = require('cors')
+var cors = require('cors')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://staycation:28agustus@cluster0.3mrpv.mongodb.net/db_staycation?retryWrites=true&w=majority', {useNewUrlParser: true, 
